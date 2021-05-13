@@ -1,0 +1,73 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Girassol&family=Itim&display=swap');
+
+body {
+    background-color: coral;
+    padding: 50px;
+}
+
+#login {
+    background-color: burlywood;
+    font-family: 'Itim', cursive;
+}
+
+#mess {
+
+    width: 200px;
+    height: 40px;
+}
+
+#bord {
+    position: relative;
+    width: 400px;
+    height: fit-content;
+    background-color: antiquewhite;
+    border-style: solid;
+    border: aqua;
+    font-size: large;
+    margin: 10px;
+}
+
+#main {
+    color: coral;
+    background-color: bisque;
+    position: center;
+    top: 150px;
+    margin: auto;
+    width: 700px;
+    height: fit-content;
+    text-align: left;
+
+}
+
+.grid {
+    display: grid;
+    place-items: center;
+}
+
+#title {
+    position: center;
+    font-family: 'Itim', cursive;
+    font-size: 1.2cm;
+    text-align: center;
+}
+
+#back {
+    position: center;
+    height: 150px;
+    background-color: bisque;
+    padding: 50px;
+    padding-top: 20px;
+}
+
+#topright {
+    text-align: right;
+    z-index: 3;
+}
+
+#foot {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
