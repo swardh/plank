@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>plank</title>
+  <link rel = "stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="title">
+    <h1>plank</h1>
+</div>
+    <div id="main" class="grid">
+        <p th:text="${name}"> </p>
+        <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
+          <input id="mess" type="text" placeholder="Write message" th:field="*{message}"><br>
+          <input type="submit" value="Post">
+        </form>
+
+        <div id="bord" th:each="mess: ${msg}">
+          <p th:text="${mess.message}"> </p>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div id="foot">
+        <form th:action="@{/logout}" method="GET">
+            <input type="submit" value="Log out">
+        </form>
+    </div>
+</body>
+</html>
