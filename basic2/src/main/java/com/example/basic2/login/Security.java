@@ -26,6 +26,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/style.css").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -36,6 +37,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .logout()
                     .permitAll()
                     .deleteCookies("JSESSIONID");
+
 
 
     }
