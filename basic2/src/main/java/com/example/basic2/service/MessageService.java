@@ -3,8 +3,10 @@ package com.example.basic2.service;
 import com.example.basic2.entity.Message;
 import com.example.basic2.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.util.List;
 
 @Service
@@ -17,6 +19,7 @@ public class MessageService {
     }
 
     public List<Message> getAllMessages(){
-        return MessageRepository.findAll();
+        return MessageRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
+
 }
