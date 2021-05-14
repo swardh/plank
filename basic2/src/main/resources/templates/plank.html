@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>plank</title>
-  <link rel = "stylesheet" href="style.css">
+    <link href="style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -19,14 +19,17 @@
           <input type="submit" value="Post">
         </form>
 
-        <div id="bord" th:each="mess: ${msg}">
+        <div id="bord" th:each="mess: ${msgg}">
+            <fieldset>
+                <legend th:text="${mess.userId}"></legend>
           <p th:text="${mess.message}"> </p>
+        </fieldset>
         </div>
         <br>
         <br>
     </div>
     <div id="foot">
-        <form th:action="@{/logout}" method="GET">
+        <form th:action="@{/logout}" method="POST">
             <input type="submit" value="Log out">
         </form>
     </div>
