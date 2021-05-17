@@ -73,3 +73,16 @@ body {
     right: 10px;
     bottom: 10px;
 }
+
+.legend2 {
+    position: absolute;
+    bottom: -7px;
+    right: -7px;
+    line-height:1.2em;
+
+}
+
+#imgplace {
+    display: grid;
+    place-items: end;
+}

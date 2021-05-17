@@ -19,7 +19,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("select user_name,CONCAT('{noop}',password),true from users where user_name=?")
-        .authoritiesByUsernameQuery("select user_name,role from users where user_name=?");
+        .authoritiesByUsernameQuery("select user_name, role_id from users where user_name=?");
 
     }
 
@@ -27,6 +27,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/style.css").permitAll()
+                .antMatchers("/plank").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -38,8 +39,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .deleteCookies("JSESSIONID");
 
-
-
     }
+
 
 }

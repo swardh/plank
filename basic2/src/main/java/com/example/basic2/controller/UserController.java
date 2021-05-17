@@ -18,10 +18,10 @@ public class UserController {
 
 
     @GetMapping("/welcome")
-    public String welcome(@ModelAttribute("usr") Users usr,
+    public String welcome(@ModelAttribute("ussr") Users usr,
                           Model model) {
 
-        model.addAttribute("users", userService.getAllUsers());
+     //   model.addAttribute("users", userService.getAllUsers());
 
         return "welcome";
     }
@@ -30,8 +30,15 @@ public class UserController {
     //Skicka information "post" sparar en användare
     @GetMapping("/saveUser")
     public String saveUser(@ModelAttribute("usr") Users usr){
+        usr.setImage("https://via.placeholder.com/150");
         userService.saveUser(usr);
-        return "redirect:/welcome";
+        return "redirect:/login";
+    }
+
+    @GetMapping("/edituser")
+    public String editUser(@ModelAttribute("edit") Users user){
+
+        return "redirect:/plank";
     }
 
 

@@ -1,17 +1,21 @@
 package com.example.basic2.controller;
 import com.example.basic2.entity.Message;
 import com.example.basic2.entity.Users;
+import com.example.basic2.repository.MessageRepository;
 import com.example.basic2.repository.UserRepository;
 import com.example.basic2.service.MessageService;
 import com.example.basic2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.swing.*;
 import java.security.Principal;
+import java.util.Optional;
 
 import static org.springframework.data.domain.Sort.Direction.ASC;
 
@@ -20,17 +24,20 @@ public class MessageController {
 
     @Autowired
     private MessageService messageService;
+    private MessageRepository messageRepository;
 
     @Autowired
     private UserRepository userRepository;
-    private UserService userService;
+
 
     @GetMapping("/plank")
     public String plank(@ModelAttribute("mssg")Message mess, Model model, Principal principal) {
 
+        Users user = userRepository.findByUserName(principal.getName());
         model.addAttribute("user", userRepository);
         model.addAttribute("msgg", messageService.getAllMessages());
         model.addAttribute("name", principal.getName());
+        model.addAttribute("avatar", user.getImage());
         return "plank";
     }
 
@@ -41,11 +48,21 @@ public class MessageController {
         Users user = userRepository.findByUserName(username);
         msg.setUserId(user.getId());
         messageService.saveMessage(msg);
+        System.out.println("SAVEID --------- " + msg.getId());
         return "redirect:/plank";
     }
 
     @GetMapping("/logout")
     public String logout(){
-        return "redirect:/";
+        return "redirect:/login";
+    }
+
+
+    @PostMapping("/delMes")
+    public String delete(Message mssg, Principal principal) {
+
+        messageService.delete(mssg, principal);
+
+        return "redirect:/plank";
     }
 }

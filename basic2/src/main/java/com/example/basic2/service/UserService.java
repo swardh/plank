@@ -14,7 +14,12 @@ public class UserService {
     private UserRepository UserRepository;
 
     public void saveUser(Users user){
-        UserRepository.save(user);
+        if(UserRepository.findByUserName(user.getUserName()) != null) {
+            System.out.println("TAKEN");
+        }
+        else{
+            UserRepository.save(user);
+        }
     }
 
     public List<Users> getAllUsers(){

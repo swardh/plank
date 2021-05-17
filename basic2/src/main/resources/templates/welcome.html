@@ -11,9 +11,9 @@
 <div id="title">
     <h1>Create new account</h1>
         <div id="back">
-        <form th:action="@{/saveUser}" th:object="${usr}" method="GET">
+        <form th:action="@{/saveUser}" th:object="${ussr}" method="GET">
           <input type="text" placeholder="Username" th:field="*{userName}"><br>
-          <input type="text" placeholder="Password" th:field="*{password}"><br>
+          <input type="password" placeholder="Password" th:field="*{password}"><br>
           <input type="submit" value="Create account">
         </form>
         </div>
