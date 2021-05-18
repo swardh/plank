@@ -31,7 +31,6 @@ public class MessageService {
     public void delete(Message m, Principal principal) {
 
         String username = principal.getName();
-        System.out.println(username);
         Users user = userRepository.findByUserName(username);
         if (user.getId() == m.getUserId()) {
             messageRepository.delete(m);

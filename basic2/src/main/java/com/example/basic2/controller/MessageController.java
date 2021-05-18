@@ -24,7 +24,6 @@ public class MessageController {
 
     @Autowired
     private MessageService messageService;
-    private MessageRepository messageRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -48,7 +47,6 @@ public class MessageController {
         Users user = userRepository.findByUserName(username);
         msg.setUserId(user.getId());
         messageService.saveMessage(msg);
-        System.out.println("SAVEID --------- " + msg.getId());
         return "redirect:/plank";
     }
 
