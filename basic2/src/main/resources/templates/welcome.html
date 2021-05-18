@@ -14,6 +14,7 @@
         <form th:action="@{/saveUser}" th:object="${ussr}" method="GET">
           <input type="text" placeholder="Username" th:field="*{userName}"><br>
           <input type="password" placeholder="Password" th:field="*{password}"><br>
+            <input type="text" placeholder="URL to image" th:field="*{image}"><br>
           <input type="submit" value="Create account">
         </form>
         </div>
