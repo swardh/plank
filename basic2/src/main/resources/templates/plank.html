@@ -13,14 +13,18 @@
     <h1 id="title">plank</h1>
 </div>
 <div>
-    <img id="imgplace" th:src="${avatar}" alt="avatar" width="150" height="150"/>
+    <img id="imgplace" th:src="${avatar}" alt="avatar" width="75" height="75"/>
+    <form>
+    <a th:href="@{/userinfo}" method="GET">
+    <img id="imgplace2" th:src="${cog}" alt="avatar" width="75" height="75"/>
+    </a>
+    </form>
 </div>
     <div id="main" class="grid">
 
-        <form th:action="@{/userinfo}" method="GET">
+
             <input id="button" type="submit" th:value="${name}">
         </form>
-
 
 
 <!-------------Message Box----------------------->
@@ -41,10 +45,12 @@
 
 <!-------------Delete Message----------------------->
 
+
                     <form th:action="@{/delMes}" th:object="${mssg}" method="POST">
                         <input type="hidden" th:value="${mess.id}" name="id">
                         <input type="hidden" th:value="${mess.username}" name="username">
                         <input class="legend2" type="submit" value="x">
+
                     </form>
             </fieldset>
 
@@ -60,6 +66,7 @@
             <input type="submit" value="Log out">
         </form>
     </div>
+
 
 </body>
 </html>

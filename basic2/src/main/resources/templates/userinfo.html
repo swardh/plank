@@ -8,20 +8,27 @@
   <link href="style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-    <form>
-        <div id="title">
-            <h1 th:text="${username}"></h1>
-        </div>
 
-    </form>
+            <h1 id="title" th:text="${username}"></h1>
 
 <div class="grid">
     <img style="border-radius: 50%;" th:src="${image}" alt="avatar" width="150" height="150"/>
+
+<br>
+
     <form th:action="@{/edituser}" th:object="${usrinfo}" method="POST">
-        <p>Change password</p>
+
     <input  type="input" placeholder="New password" th:value="*{password}" name="password"><br>
-        <input  type="input" placeholder="URL to image" th:value="*{image}" name="image"><br>
+        <input  type="input" placeholder="New URL to image" th:value="*{image}" name="image"><br>
     <input id="button-right" type="submit" value="Save">
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <form th:action="@{/plank}" method="GET">
+        <input id="button" type="submit" value="back">
     </form>
 
 </div>
@@ -31,6 +38,8 @@
   <form th:action="@{/logout}" method="GET">
     <input type="submit" value="Log out">
   </form>
+
 </div>
+
 </body>
 </html>

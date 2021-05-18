@@ -28,6 +28,7 @@ public class Security extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/style.css").permitAll()
                 .antMatchers("/plank").permitAll()
+                .antMatchers("/userinfo").hasAuthority("Admin")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

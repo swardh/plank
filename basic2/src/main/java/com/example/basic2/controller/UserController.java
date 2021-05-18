@@ -87,7 +87,7 @@ public class UserController {
 
         userService.editUser(ussser);
 
-            return "redirect:/userinfo";
+            return "redirect:/";
     }
 
 }
