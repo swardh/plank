@@ -62,8 +62,8 @@ public class UserController {
         String username = principal.getName();
         Users uzer = userRepository.findByUserName(username);
 
-        System.out.println("top uzer " + uzer);
-        System.out.println("top ussser " + ussser);
+    //    System.out.println("top uzer " + uzer);
+    //    System.out.println("top ussser " + ussser);
         ussser.setUserName(username);
         ussser.setId(uzer.getId());
         ussser.setRole(uzer.getRole());
@@ -82,8 +82,8 @@ public class UserController {
             System.out.println("image " + uzer.getImage());
         }
 
-        System.out.println("last uzer " + uzer);
-        System.out.println("last ussser " + ussser);
+    //    System.out.println("last uzer " + uzer);
+    //    System.out.println("last ussser " + ussser);
 
         userService.editUser(ussser);
 

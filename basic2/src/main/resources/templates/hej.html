@@ -4,8 +4,8 @@
     <link rel = "stylesheet" href="style.css">
 </head>
 <body id="main">
-<h1 id="title">plank login</h1>
-<div>
+<h1 id="title">plank login</h1><br><br>
+<div class="grid">
     <form autocomplete="off" name="f" th:action="@{/login}" method="post">
         <fieldset>
             <legend>Login</legend>
@@ -20,7 +20,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password"/>
             <div class="form-actions">
-                <button type="submit" class="btn">Log in</button>
+                <button id="button-right"  type="submit" class="btn">Log in</button>
             </div>
         </fieldset>
     </form>

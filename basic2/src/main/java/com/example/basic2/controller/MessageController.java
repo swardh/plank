@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.swing.*;
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.data.domain.Sort.Direction.ASC;
@@ -28,6 +29,9 @@ public class MessageController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
 
     @GetMapping("/plank")
     public String plank(@ModelAttribute("mssg")Message mess, Model model, Principal principal) {
@@ -35,8 +39,11 @@ public class MessageController {
         Users user = userRepository.findByUserName(principal.getName());
         model.addAttribute("user", userRepository);
         model.addAttribute("msgg", messageService.getAllMessages());
+
         model.addAttribute("name", principal.getName());
         model.addAttribute("avatar", user.getImage());
+
+
         return "plank";
     }
 
@@ -45,7 +52,7 @@ public class MessageController {
     public String saveMessage(@ModelAttribute("msg") Message msg, Principal principal){
         String username = principal.getName();
         Users user = userRepository.findByUserName(username);
-        msg.setUserId(user.getId());
+        msg.setUsername(user.getUserName());
         messageService.saveMessage(msg);
         return "redirect:/plank";
     }
@@ -61,6 +68,15 @@ public class MessageController {
 
         messageService.delete(mssg, principal);
 
+        return "redirect:/plank";
+    }
+
+    @GetMapping("/getusername")
+    public String getusername(@ModelAttribute("gun") int userid, Model model){
+        System.out.println("GETUSERNAME " + userid);
+
+        Users user = userRepository.findUsersById(userid);
+        model.addAttribute("uname", user.getUserName());
         return "redirect:/plank";
     }
 }

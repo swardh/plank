@@ -24,6 +24,7 @@ public class MessageService {
     }
 
     public List<Message> getAllMessages(){
+
         return messageRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
@@ -32,10 +33,12 @@ public class MessageService {
 
         String username = principal.getName();
         Users user = userRepository.findByUserName(username);
-        if (user.getId() == m.getUserId()) {
+        if (username.equals(m.getUsername())) {
             messageRepository.delete(m);
         }
-
+        else{
+            System.out.println("INTE DELETE " + username + " " +  m.getUsername());
+        }
     }
 
 

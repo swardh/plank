@@ -9,29 +9,41 @@
 </head>
 <body>
 
-<div id="title">
-    <h1>plank</h1>
+<div>
+    <h1 id="title">plank</h1>
+</div>
+<div>
+    <img id="imgplace" th:src="${avatar}" alt="avatar" width="150" height="150"/>
 </div>
     <div id="main" class="grid">
 
         <form th:action="@{/userinfo}" method="GET">
             <input id="button" type="submit" th:value="${name}">
         </form>
-            <img id="imgplace" th:src="${avatar}" alt="avatar" width="150" height="150"/></a><br>
-    </form>
+
+
+
+<!-------------Message Box----------------------->
+
         <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
-          <input id="mess" type="text" placeholder="Write message" th:field="*{message}"><br>
-          <input type="submit" value="Post">
+            <textarea id="mess" cols="10" rows="4" type="text" placeholder="Write message" th:field="*{message}"></textarea><br>
+          <input id="button-right" type="submit" value="Post">
         </form>
 
+<!--------------Messages---------------------->
+
         <div id="bord" th:each="mess: ${msgg}">
+            <form th:action="@{getusername}" th:object="${mess}" method="GET">
+                <input type="hidden" th:value="${mess.username}"></form>
             <fieldset>
-                <legend th:text="${mess.userId}"></legend>
+                <legend th:text="${mess.username}"></legend>
                     <p th:text="${mess.message}"></p>
+
+<!-------------Delete Message----------------------->
 
                     <form th:action="@{/delMes}" th:object="${mssg}" method="POST">
                         <input type="hidden" th:value="${mess.id}" name="id">
-                        <input type="hidden" th:value="${mess.userId}" name="userId">
+                        <input type="hidden" th:value="${mess.username}" name="username">
                         <input class="legend2" type="submit" value="x">
                     </form>
             </fieldset>
@@ -40,10 +52,14 @@
         <br>
         <br>
     </div>
-    <div id="foot">
+
+<!-------------Log Out----------------------->
+
+    <div id="logout">
         <form th:action="@{/logout}" method="GET">
             <input type="submit" value="Log out">
         </form>
     </div>
+
 </body>
 </html>
