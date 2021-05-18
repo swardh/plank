@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit</title>
+  <link href="style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+
+    <form>
+        <div id="title">
+            <h1 th:text="${username}"></h1>
+    <img style="border-radius: 50%;" th:src="${image}" alt="avatar" width="150" height="150"/></a><br>
+        </div>
+    </form>
+
+<div class="grid">
+
+    <form th:action="@{/edituser}" th:object="${usrinfo}" method="POST">
+        <p>Change password</p>
+    <input  type="input" placeholder="New password" th:value="*{password}" name="password"><br>
+        <input  type="input" placeholder="URL to image" th:value="*{image}" name="image"><br>
+    <input type="submit" value="Save">
+    </form>
+
+</div>
+  <br>
+  <br>
+</div>
+<div id="foot">
+  <form th:action="@{/logout}" method="GET">
+    <input type="submit" value="Log out">
+  </form>
+</div>
+</body>
+</html>
