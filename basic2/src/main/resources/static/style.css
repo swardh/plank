@@ -83,6 +83,14 @@ body {
 }
 
 #imgplace {
-    display: grid;
-    place-items: end;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+}
+
+#button {
+    background: transparent;
+    font-family: 'Itim', cursive;
+    font-size: medium;
 }
