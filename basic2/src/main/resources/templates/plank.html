@@ -13,9 +13,12 @@
     <h1>plank</h1>
 </div>
     <div id="main" class="grid">
-        <p th:text="${name}"></p>
-           <img id="imgplace" th:src="${avatar}" alt="avatar" width="50" height="50"/>
 
+        <form th:action="@{/userinfo}" method="GET">
+            <input id="button" type="submit" th:value="${name}">
+        </form>
+            <img id="imgplace" th:src="${avatar}" alt="avatar" width="150" height="150"/></a><br>
+    </form>
         <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
           <input id="mess" type="text" placeholder="Write message" th:field="*{message}"><br>
           <input type="submit" value="Post">
@@ -42,6 +45,5 @@
             <input type="submit" value="Log out">
         </form>
     </div>
-    <img src="https://via.placeholder.com/150">
 </body>
 </html>
