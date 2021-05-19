@@ -1,9 +1,11 @@
 package com.example.basic2.controller;
 
 import com.example.basic2.entity.Users;
+import com.example.basic2.login.Security;
 import com.example.basic2.repository.UserRepository;
 import com.example.basic2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,15 @@ import java.security.Principal;
 @Controller
 public class UserController {
 
+
    @Autowired
    private UserService userService;
 
    @Autowired
    private UserRepository userRepository;
+
+   @Autowired
+   private PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/welcome")
@@ -32,15 +38,19 @@ public class UserController {
     @GetMapping("/saveUser")
     public String saveUser(@ModelAttribute("usr") Users usr, Model model){
 
+        System.out.println("INNE I SAVEUSER");
+
         model.addAttribute("image", usr.getImage());
         if(usr.getImage() == ""){
             usr.setImage("https://pyxis.nymag.com/v1/imgs/630/6e0/eb215ad90cd826b9e57ff505f54c5c7228-07-avatar.rsquare.w700.jpg");
         }
         else {
-            System.out.println("image " + usr.getImage());
         }
-
+        String hashedPass = passwordEncoder.encode(usr.getPassword());
+        usr.setPassword(hashedPass);
+        System.out.println(usr.getPassword());
         userService.saveUser(usr);
+        System.out.println(usr);
         return "redirect:/login";
     }
 
