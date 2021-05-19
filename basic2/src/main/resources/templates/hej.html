@@ -6,8 +6,9 @@
 <body id="main">
 <h1 id="title">plank login</h1><br><br>
 <div class="grid">
-    <form autocomplete="off" name="f" th:action="@{/login}" method="post">
-        <fieldset>
+    <fieldset>
+        <form autocomplete="off" name="f" th:action="@{/login}" method="post">
+
             <legend>Login</legend>
             <div id="login" th:if="${param.error}" class="alert alert-error">
                 Invalid username and password.
@@ -22,17 +23,27 @@
             <div class="form-actions">
                 <button id="button-right"  type="submit" class="btn">Log in</button>
             </div>
-        </fieldset>
-    </form>
-    <br>
-    <br>
-    <br>
-    <fieldset>
-        <legend>New account</legend>
-    <div><form th:action="@{/welcome}" method="GET">
-        <input type="submit" value="Register new account">
-    </form></div>
+
+        </form>
     </fieldset>
+
+    <br>
+    <br>
+    <br>
+
+    <fieldset>
+
+        <legend>New account</legend>
+            <div>
+                <form th:action="@{/welcome}" method="GET">
+                    <input type="submit" value="Register new account">
+                </form>
+            </div>
+
+    </fieldset>
+
 </div>
+
+
 </body>
 </html>

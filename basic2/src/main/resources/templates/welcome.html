@@ -8,22 +8,24 @@
 </head>
 <body>
 
-<div id="title">
-    <h1>Create new account</h1>
-        <div id="back">
+<div>
+    <h1 id="title">create new account</h1>
+</div>
+    <div id="main" class="grid">
+
         <form th:action="@{/saveUser}" th:object="${ussr}" method="GET">
-          <input type="text" placeholder="Username" th:field="*{userName}"><br>
-          <input type="password" placeholder="Password" th:field="*{password}"><br>
-            <input type="text" placeholder="URL to image" th:field="*{image}"><br>
+          <input type="text" placeholder="Username" th:field="*{userName}">
+          <input type="password" placeholder="Password" th:field="*{password}">
+            <input type="text" placeholder="URL to image" th:field="*{image}">
           <input type="submit" value="Create account">
         </form>
         </div>
-  <div>
+
     <form th:action="@{/login}" method="GET">
       <input id="button-right" type="submit" value="Login">
     </form>
-  </div>
-</div>
+
+
 </body>
 </html>
 
