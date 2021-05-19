@@ -22,9 +22,8 @@
 </div>
     <div id="main" class="grid">
 
+        <input id="button" type="submit" th:value="${name}">
 
-            <input id="button" type="submit" th:value="${name}">
-        </form>
 
 
 <!-------------Message Box----------------------->
@@ -45,13 +44,14 @@
 
 <!-------------Delete Message----------------------->
 
+                <div th:unless="${name} != ${mess.username}">
 
                     <form th:action="@{/delMes}" th:object="${mssg}" method="POST">
                         <input type="hidden" th:value="${mess.id}" name="id">
                         <input type="hidden" th:value="${mess.username}" name="username">
                         <input class="legend2" type="submit" value="x">
-
                     </form>
+                </div>
             </fieldset>
 
         </div>
