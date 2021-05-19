@@ -90,6 +90,7 @@ body {
     left: 275px;
     border-radius: 50%;
     z-index: 30;
+    opacity: 50%;
 
 
     /* Animation to spin and move the sphere */
