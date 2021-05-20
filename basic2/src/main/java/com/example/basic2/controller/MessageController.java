@@ -42,7 +42,8 @@ public class MessageController {
 
         model.addAttribute("name", principal.getName());
         model.addAttribute("avatar", user.getImage());
-        String cog = "https://freepikpsd.com/wp-content/uploads/2019/11/Cogwheel_Gearwheel_Cog_Gear_97627-Transparent-Png-Images.png";
+        String cog = "https://www.pngjoy.com/pngl/199/15239808_cogwheel-settings-options-preferences-cog-cog-wheel-hd.png";
+    //    String cog = "https://freepikpsd.com/wp-content/uploads/2019/11/Cogwheel_Gearwheel_Cog_Gear_97627-Transparent-Png-Images.png";
         model.addAttribute("cog", cog);
 
         return "plank";

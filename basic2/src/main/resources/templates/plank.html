@@ -49,7 +49,7 @@
                     <form  th:action="@{/delMes}" th:object="${mssg}" method="POST">
                         <input id="id" type="hidden" th:value="${mess.id}" name="id">
                         <input type="hidden" th:value="${mess.username}" name="username">
-                        <input class="legend2" id="fade" onclick="edit()" type="submit" value="+">
+                        <input class="legend2" id="ex" onclick="edit()" type="submit" value="+">
 
                     </form>
 
@@ -65,17 +65,15 @@
 
     <div id="logout">
         <form th:action="@{/logout}" method="GET">
-            <input onmouseover="turn()" type="submit" value="Log out">
+            <input id="upsidedown" type="submit" value="Log out">
         </form>
     </div>
-
 
 
 <script>
     function edit() {
         alert("Message deleted")
     }
-
 
 </script>
 

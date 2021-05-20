@@ -28,4 +28,8 @@ public class UserService {
 
     }
 
+    public void deleteUsr(Users user){
+        userRepository.delete(user);
+    }
+
 }

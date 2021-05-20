@@ -1,5 +1,6 @@
 package com.example.basic2.controller;
 
+import com.example.basic2.entity.Message;
 import com.example.basic2.entity.Users;
 import com.example.basic2.login.Security;
 import com.example.basic2.repository.UserRepository;
@@ -83,6 +84,8 @@ public class UserController {
         }
         else{
             System.out.println("password " + uzer.getPassword());
+            String hashedPass = passwordEncoder.encode(ussser.getPassword());
+            ussser.setPassword(hashedPass);
         }
 
         if(ussser.getImage() == ""){
@@ -98,6 +101,15 @@ public class UserController {
         userService.editUser(ussser);
 
             return "redirect:/plank";
+    }
+
+    @PostMapping("/delUser")
+    public String deleteUser(Principal principal) {
+        String usr = principal.getName();
+        Users user = userRepository.findByUserName(usr);
+        userService.deleteUsr(user);
+
+        return "redirect:/login";
     }
 
 }

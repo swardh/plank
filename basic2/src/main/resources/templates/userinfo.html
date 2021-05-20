@@ -34,6 +34,11 @@
 </div>
 
 
+        <form  th:action="@{/delUser}" th:object="${usrinfo}" method="POST">
+            <input id="id" type="hidden" th:value="${username}" name="id">
+            <input onclick="gone()" type="submit" value="Delete yourself">
+        </form>
+
 <div id="logout">
   <form th:action="@{/logout}" method="GET">
     <input type="submit" value="Log out">
@@ -41,5 +46,11 @@
 
 </div>
 
+
+            <script>
+                function gone() {
+                    alert("User deleted")
+                }
+            </script>
 </body>
 </html>
