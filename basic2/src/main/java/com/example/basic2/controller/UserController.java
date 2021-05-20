@@ -97,7 +97,7 @@ public class UserController {
 
         userService.editUser(ussser);
 
-            return "redirect:/";
+            return "redirect:/plank";
     }
 
 }

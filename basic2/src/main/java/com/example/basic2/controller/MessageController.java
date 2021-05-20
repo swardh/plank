@@ -58,6 +58,15 @@ public class MessageController {
         return "redirect:/plank";
     }
 
+    @GetMapping("/editMessage")
+    public String editMessage(@ModelAttribute("msg") Message msg, Principal principal){
+        String username = principal.getName();
+        Users user = userRepository.findByUserName(username);
+        msg.setUsername(user.getUserName());
+        messageService.saveMessage(msg);
+        return "redirect:/plank";
+    }
+
     @GetMapping("/logout")
     public String logout(){
         return "redirect:/login";

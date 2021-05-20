@@ -3,8 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Girassol&family=Itim&display=swap');
 
 body {
-    background-color: coral;
-    padding: 1px;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+
 }
 
 #title {
@@ -78,9 +80,13 @@ body {
 
 .legend2 {
     position: absolute;
-    bottom: -7px;
-    right: -7px;
+    top: 0px;
+    right: -9px;
     line-height:1.2em;
+    background: None;
+    border-radius: 50%;
+    border: None;
+    font-size: 20px;
 
 }
 
@@ -195,3 +201,35 @@ body {
     float: right;
 }
 
+#fade {
+    -webkit-animation: spin 1000ms linear infinite, moveLeftToRight 10s linear infinite;
+    -moz-animation: spin 1000ms linear infinite, moveLeftToRight 10s linear infinite;
+    -ms-animation: spin 1000ms linear infinite, moveLeftToRight 10s linear infinite;
+    animation: spin 10000ms linear infinite, moveLeftToRight 50s linear infinite;
+
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+
+}
+
+/* Spinning the sphere using key frames */
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+#upsidedown {
+    transform: rotate(180deg);
+}
