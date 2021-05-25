@@ -1,8 +1,6 @@
 package com.example.basic2.controller;
 
-import com.example.basic2.entity.Message;
 import com.example.basic2.entity.Users;
-import com.example.basic2.login.Security;
 import com.example.basic2.repository.UserRepository;
 import com.example.basic2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +40,7 @@ public class UserController {
         System.out.println("INNE I SAVEUSER");
 
         model.addAttribute("image", usr.getImage());
-        if(usr.getImage() == ""){
+        if(usr.getImage().equals("")){
             usr.setImage("https://pyxis.nymag.com/v1/imgs/630/6e0/eb215ad90cd826b9e57ff505f54c5c7228-07-avatar.rsquare.w700.jpg");
         }
         else {
@@ -69,17 +67,15 @@ public class UserController {
     }
 
     @PostMapping("/edituser")
-    public String editUser(@ModelAttribute("edit")Users ussser, Principal principal){
+    public String editUser(@ModelAttribute("edit") Users ussser, Principal principal){
         String username = principal.getName();
         Users uzer = userRepository.findByUserName(username);
 
-    //    System.out.println("top uzer " + uzer);
-    //    System.out.println("top ussser " + ussser);
         ussser.setUserName(username);
         ussser.setId(uzer.getId());
         ussser.setRole(uzer.getRole());
 
-        if(ussser.getPassword() == ""){
+        if(ussser.getPassword().equals("")){
             ussser.setPassword(uzer.getPassword());
         }
         else{
@@ -95,8 +91,6 @@ public class UserController {
             System.out.println("image " + uzer.getImage());
         }
 
-    //    System.out.println("last uzer " + uzer);
-    //    System.out.println("last ussser " + ussser);
 
         userService.editUser(ussser);
 

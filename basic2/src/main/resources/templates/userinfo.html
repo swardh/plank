@@ -12,6 +12,7 @@
             <h1 id="title" th:text="${username}"></h1>
 
 <div class="grid">
+
     <img style="border-radius: 50%;" th:src="${image}" alt="avatar" width="150" height="150"/>
 
 <br>
@@ -33,15 +34,16 @@
 
 </div>
 
-
+        <div id="delete">
         <form  th:action="@{/delUser}" th:object="${usrinfo}" method="POST">
             <input id="id" type="hidden" th:value="${username}" name="id">
-            <input onclick="gone()" type="submit" value="Delete yourself">
+            <input class="btn" id="upsidedown" onclick="gone()" type="submit" value="Delete yourself">
         </form>
+        </div>
 
 <div id="logout">
   <form th:action="@{/logout}" method="GET">
-    <input type="submit" value="Log out">
+    <input class="btn" id="upsidedown" type="submit" value="Log out">
   </form>
 
 </div>

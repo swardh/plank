@@ -1,7 +1,6 @@
 package com.example.basic2.service;
 
 import com.example.basic2.entity.Message;
-import com.example.basic2.entity.Users;
 import com.example.basic2.repository.MessageRepository;
 import com.example.basic2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,6 @@ public class MessageService {
     public void delete(Message m, Principal principal) {
 
         String username = principal.getName();
-        Users user = userRepository.findByUserName(username);
         if (username.equals(m.getUsername())) {
             messageRepository.delete(m);
         }

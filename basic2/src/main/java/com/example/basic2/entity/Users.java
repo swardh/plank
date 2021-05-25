@@ -22,7 +22,7 @@ public class Users {
     private long id;
     private String userName;
     private String password;
-    private String role;
+    private String role = "User";
     private String image;
 
     /* Constructor*/

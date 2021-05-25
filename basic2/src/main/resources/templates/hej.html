@@ -2,14 +2,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Please Login</title>
+    <title>Login</title>
     <link rel = "stylesheet" href="style.css">
 </head>
 <body id="main">
 <h1 id="title">plank login</h1><br><br>
 <div class="grid">
+
+    <div class="floater">
+
     <fieldset>
         <form autocomplete="off" name="f" th:action="@{/login}" method="post">
+
 
             <legend>Login</legend>
             <div id="login" th:if="${param.error}" class="alert alert-error">
@@ -28,11 +32,15 @@
 
         </form>
     </fieldset>
-
+    </div>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
 
+    <div class="floater" id="slower">
     <fieldset>
 
         <legend>New account</legend>
@@ -43,7 +51,7 @@
             </div>
 
     </fieldset>
-
+    </div>
 </div>
 
 

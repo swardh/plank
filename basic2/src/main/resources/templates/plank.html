@@ -9,73 +9,73 @@
 </head>
 <body>
 
-<div>
-    <h1 id="title">plank</h1>
-</div>
-<div>
-    <img id="imgplace" th:src="${avatar}" alt="avatar" width="75" height="75"/>
-    <form>
-    <a th:href="@{/userinfo}" method="GET">
-    <img id="imgplace2" th:src="${cog}" alt="avatar" width="75" height="75"/>
-    </a>
-    </form>
-</div>
-    <div id="main" class="grid">
-
-        <input id="button" type="submit" th:value="${name}">
-
-
-
-<!-------------Message Box----------------------->
-
-        <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
-            <textarea id="mess" cols="10" rows="4" type="text" placeholder="Write message" th:field="*{message}"></textarea><br>
-          <input id="button-right" type="submit" value="Post">
-        </form>
-
-<!--------------Messages---------------------->
-
-        <div id="bord" th:each="mess: ${msgg}">
-            <form  th:action="@{getusername}" th:object="${mess}" method="GET">
-                <input type="hidden" th:value="${mess.username}"></form>
-            <fieldset>
-                <legend th:text="${mess.username}"></legend>
-                    <p id="ed" th:text="${mess.message}"></p>
-
-<!-------------Delete Message----------------------->
-
-                <div th:unless="${name} != ${mess.username}">
-
-                    <form  th:action="@{/delMes}" th:object="${mssg}" method="POST">
-                        <input id="id" type="hidden" th:value="${mess.id}" name="id">
-                        <input type="hidden" th:value="${mess.username}" name="username">
-                        <input class="legend2" id="ex" onclick="edit()" type="submit" value="+">
-
-                    </form>
-
-                </div>
-            </fieldset>
-
+    <div>
+        <h1 id="title">plank</h1>
+    </div>
+        <div>
+            <img id="imgplace" th:src="${avatar}" alt="avatar" width="75" height="75"/>
+            <form>
+            <a th:href="@{/userinfo}" method="GET">
+            <img id="imgplace2" th:src="${cog}" alt="avatar" width="75" height="75"/>
+            </a>
+            </form>
         </div>
-        <br>
-        <br>
-    </div>
 
-<!-------------Log Out----------------------->
+            <div id="main" class="grid">
 
-    <div id="logout">
-        <form th:action="@{/logout}" method="GET">
-            <input id="upsidedown" type="submit" value="Log out">
-        </form>
-    </div>
+                <input id="button" type="submit" th:value="${name}">
 
 
-<script>
-    function edit() {
-        alert("Message deleted")
-    }
 
-</script>
+        <!-------------Message Box----------------------->
 
+                <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
+                    <textarea id="mess" cols="10" rows="4" type="text" placeholder="Write message" th:field="*{message}"></textarea><br>
+                  <input id="button-right" class="btn" type="submit" value="Post">
+                </form>
+
+        <!--------------Messages---------------------->
+
+                <div id="bord"  class="shorter"  th:each="mess: ${msgg}">
+                    <form  th:action="@{getusername}" th:object="${mess}" method="GET">
+                        <input type="hidden" th:value="${mess.username}"></form>
+                    <div>
+                    <fieldset>
+                        <legend th:text="${mess.username}"></legend>
+                            <p id="ed" th:text="${mess.message}"></p>
+
+        <!-------------Delete Message----------------------->
+
+                            <div th:unless="${name} != ${mess.username}">
+                            <form  th:action="@{/delMes}" th:object="${mssg}" method="POST">
+                                <input id="id" type="hidden" th:value="${mess.id}" name="id">
+                                <input type="hidden" th:value="${mess.username}" name="username">
+                                <input class="legend2" id="ex" onclick="edit()" type="submit" value="+">
+
+                            </form>
+                            </div>
+
+                    </fieldset>
+                    </div>
+                <br>
+                <br>
+                 </div>
+
+    <!-------------Log Out----------------------->
+
+        <div id="logout">
+            <form th:action="@{/logout}" method="GET">
+                <input class="btn" id="upsidedown" type="submit" value="Log out">
+            </form>
+        </div>
+
+
+    <script>
+        function edit() {
+            alert("Message deleted")
+        }
+
+    </script>
+            </div>
 </body>
 </html>

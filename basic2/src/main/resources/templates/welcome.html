@@ -8,23 +8,30 @@
   <link rel = "stylesheet" href="style.css">
 </head>
 <body>
+<br>
+<br>
+<br>
+<br>
 
 <div>
     <h1 id="title">create new account</h1>
 </div>
-    <div id="main" class="grid">
+
+    <div id="main" style="height: 7em" class="grid">
 
         <form th:action="@{/saveUser}" th:object="${ussr}" method="GET">
           <input type="text" placeholder="Username" th:field="*{userName}">
           <input type="password" placeholder="Password" th:field="*{password}">
-            <input type="text" placeholder="URL to image" th:field="*{image}">
-          <input type="submit" value="Create account">
+            <input type="text" placeholder="URL to image" th:field="*{image}"><br>
+          <input class="btn" id="button-right" type="submit" value="Create account">
         </form>
+
+        <form th:action="@{/login}" method="GET">
+            <input class="btn" style="float: right" type="submit" value="Login">
+        </form>
+
         </div>
 
-    <form th:action="@{/login}" method="GET">
-      <input id="button-right" type="submit" value="Login">
-    </form>
 
 
 </body>
