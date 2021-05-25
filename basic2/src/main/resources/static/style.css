@@ -326,3 +326,13 @@ body {
     transform: translatey(-1px);
     animation: float 10s ease-in-out infinite;
 }
+
+
+#slidei {
+    animation: slide 1s ease-in;
+}
+
+@keyframes slide {
+    from { transform: scaleY(0) scaleX(0); }
+    to   { transform: scaleY(1) scaleX(1); }
+}
