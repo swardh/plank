@@ -5,20 +5,28 @@ import com.example.basic2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository UserRepository;
+    private UserRepository userRepository;
 
     public void saveUser(Users user){
-        UserRepository.save(user);
+        if(userRepository.findByUserName(user.getUserName()) != null) {
+            System.out.println("TAKEN");
+        }
+        else{
+            userRepository.save(user);
+        }
     }
 
-    public List<Users> getAllUsers(){
-        return UserRepository.findAll();
+    public void editUser(Users user){
+        userRepository.save(user);
+
+    }
+
+    public void deleteUsr(Users user){
+        userRepository.delete(user);
     }
 
 }

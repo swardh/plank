@@ -11,7 +11,7 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private long UserId;
+    private String username;
     private String Message;
 
     public Message() {
@@ -26,12 +26,12 @@ public class Message {
         this.id = id;
     }
 
-    public long getUserId() {
-        return UserId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(long userId) {
-        UserId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMessage() {
@@ -46,7 +46,7 @@ public class Message {
     public String toString() {
         return "Message{" +
                 "id=" + id +
-                ", UserId=" + UserId +
+                ", username=" + username +
                 ", Message='" + Message + '\'' +
                 '}';
     }

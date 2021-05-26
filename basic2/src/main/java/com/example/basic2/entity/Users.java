@@ -1,19 +1,29 @@
 package com.example.basic2.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+
 @Entity
 public class Users {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String userName;
     private String password;
-    private String role;
+    private String role = "User";
+    private String image;
 
     /* Constructor*/
     public Users() {
@@ -52,12 +62,22 @@ public class Users {
         this.role = role;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Users{" +
                 "id=" + id +
-                ", UserName='" + userName + '\'' +
-                ", Password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

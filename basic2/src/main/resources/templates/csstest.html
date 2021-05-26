@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plank</title>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+<fieldset>
+
+    <legend>New account</legend>
+    <div>
+        <form th:action="@{/welcome}" method="GET">
+            <input type="submit" value="Register new account">
+        </form>
+    </div>
+
+</fieldset>
+
+</div>
+
+</body>
+</html>

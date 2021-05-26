@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edit</title>
+  <link href="style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+            <h1 id="title" th:text="${username}"></h1>
+
+<div class="grid">
+
+    <img style="border-radius: 50%;" th:src="${image}" alt="avatar" width="150" height="150"/>
+
+<br>
+
+    <form th:action="@{/edituser}" th:object="${usrinfo}" method="POST">
+
+    <input  type="input" placeholder="New password" th:value="*{password}" name="password"><br>
+        <input  type="input" placeholder="New URL to image" th:value="*{image}" name="image"><br>
+    <input id="button-right" type="submit" value="Save">
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <form th:action="@{/plank}" method="GET">
+        <input id="button" type="submit" value="back">
+    </form>
+
+</div>
+
+        <div id="delete">
+        <form  th:action="@{/delUser}" th:object="${usrinfo}" method="POST">
+            <input id="id" type="hidden" th:value="${username}" name="id">
+            <input class="btn" id="upsidedown" onclick="gone()" type="submit" value="Delete yourself">
+        </form>
+        </div>
+
+<div id="logout">
+  <form th:action="@{/logout}" method="GET">
+    <input class="btn" id="upsidedown" type="submit" value="Log out">
+  </form>
+
+</div>
+
+
+            <script>
+                function gone() {
+                    alert("User deleted")
+                }
+            </script>
+</body>
+</html>

@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <html lang="en">
-<head>
+<head >
   <meta charset="UTF-8">
-  <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>create account</title>
   <link rel = "stylesheet" href="style.css">
 </head>
-<body>
 
-<div id="title">
-    <h1>Create new account</h1>
-        <div id="back">
-        <form th:action="@{/saveUser}" th:object="${usr}" method="GET">
-          <input type="text" placeholder="Username" th:field="*{userName}"><br>
-          <input type="text" placeholder="Password" th:field="*{password}"><br>
-          <input type="submit" value="Create account">
-        </form>
-        </div>
-  <div>
-    <form th:action="@{/login}" method="GET">
-      <input type="submit" value="Login">
-    </form>
-  </div>
+<body>
+<br>
+<br>
+<br>
+<br>
+
+<div>
+    <h1 id="title">create new account</h1>
 </div>
+
+    <div id="main" style="height: 7em" class="grid">
+
+        <form th:action="@{/saveUser}" th:object="${ussr}" method="GET">
+          <input type="text" placeholder="Username" th:field="*{userName}">
+          <input type="password" placeholder="Password" th:field="*{password}">
+            <input type="text" placeholder="URL to image" th:field="*{image}"><br>
+          <input class="btn" id="button-right" type="submit" value="Create account">
+        </form>
+
+        <form th:action="@{/login}" method="GET">
+            <input class="btn" style="float: right" type="submit" value="Login">
+        </form>
+
+        </div>
+
+
+
 </body>
 </html>
 

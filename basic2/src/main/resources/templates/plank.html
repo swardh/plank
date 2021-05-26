@@ -5,30 +5,77 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>plank</title>
-  <link rel = "stylesheet" href="style.css">
+    <link href="style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 
-<div id="title">
-    <h1>plank</h1>
-</div>
-    <div id="main" class="grid">
-        <p th:text="${name}"> </p>
-        <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
-          <input id="mess" type="text" placeholder="Write message" th:field="*{message}"><br>
-          <input type="submit" value="Post">
-        </form>
-
-        <div id="bord" th:each="mess: ${msg}">
-          <p th:text="${mess.message}"> </p>
+    <div>
+        <h1 id="title">plank</h1>
+    </div>
+        <div>
+            <img id="imgplace" th:src="${avatar}" alt="avatar" width="75" height="75"/>
+            <form>
+            <a th:href="@{/userinfo}" method="GET">
+            <img id="imgplace2" th:src="${cog}" alt="avatar" width="75" height="75"/>
+            </a>
+            </form>
         </div>
-        <br>
-        <br>
-    </div>
-    <div id="foot">
-        <form th:action="@{/logout}" method="GET">
-            <input type="submit" value="Log out">
-        </form>
-    </div>
+
+            <div id="main" class="grid">
+
+                <input id="button" type="submit" th:value="${name}">
+
+
+
+        <!-------------Message Box----------------------->
+
+                <form th:action="@{/saveMessage}" th:object="${mssg}" method="GET">
+                    <textarea id="mess" cols="10" rows="4" type="text" placeholder="Write message" th:field="*{message}"></textarea><br>
+                  <input id="button-right" class="btn" type="submit" value="Post">
+                </form>
+
+        <!--------------Messages---------------------->
+
+                <div id="bord"  class="shorter"  th:each="mess: ${msgg}">
+                    <form  th:action="@{getusername}" th:object="${mess}" method="GET">
+                        <input type="hidden" th:value="${mess.username}"></form>
+                    <div>
+                    <fieldset>
+                        <legend th:text="${mess.username}"></legend>
+                            <p id="ed" th:text="${mess.message}"></p>
+
+        <!-------------Delete Message----------------------->
+
+                            <div th:unless="${name} != ${mess.username}">
+                            <form  th:action="@{/delMes}" th:object="${mssg}" method="POST">
+                                <input id="id" type="hidden" th:value="${mess.id}" name="id">
+                                <input type="hidden" th:value="${mess.username}" name="username">
+                                <input class="legend2" id="ex" onclick="edit()" type="submit" value="+">
+
+                            </form>
+                            </div>
+
+                    </fieldset>
+                    </div>
+                <br>
+                <br>
+                 </div>
+
+    <!-------------Log Out----------------------->
+
+        <div id="logout">
+            <form th:action="@{/logout}" method="GET">
+                <input class="btn" id="upsidedown" type="submit" value="Log out">
+            </form>
+        </div>
+
+
+    <script>
+        function edit() {
+            alert("Message deleted")
+        }
+
+    </script>
+            </div>
 </body>
 </html>
